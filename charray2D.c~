@@ -67,11 +67,8 @@ void charray_fill(charray tab, char background) {
 
 void charray_destroy(charray tab) {
 
-	printf("tab->data\n\n");
 	tools_free(tab->data, sizeof(char) * tab->width * tab->height);
-	printf("tab->data2D\n\n");
 	tools_free(tab->data2D, sizeof(char*) * tab->height);
-	printf("tab\n\n");
 	tools_free(tab, sizeof(struct _charray));
 }
 
