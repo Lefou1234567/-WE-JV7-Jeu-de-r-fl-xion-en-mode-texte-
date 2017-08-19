@@ -3,16 +3,19 @@
 
 #include "tools.h"
 #include "charray2D.h"
-#include "grid.h"
+#include "gGrid.h"
 
-int main(int argc, char** argv) {
 
+int main(int argc, char** argv) { 
 	tools_alloc_init();
 
-	grid grd = standard_grid_create(3);
+	gGrid grid = gGrid_create(3, '~', '#');
 
-	grid_destroy(grd);
-
+	charray_display(grid->skin);
+	fprintf(stderr, "\n\n");
+	
+	gGrid_destroy(grid);
 	tools_alloc_check_at_end();
+
 	return EXIT_SUCCESS;
 }

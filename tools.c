@@ -13,7 +13,7 @@ void tools_alloc_check_at_end() {
 	if(TOOLS_ALLOC != 0) {
 
 		printf("Il y a une fuite de memoire !\n");
-		printf("%d octets de la memoire n'ont pas etait desalloues !\n", TOOLS_ALLOC);
+		printf("%d octets de la memoire n'ont pas ete desalloues !\n", TOOLS_ALLOC);
 	}
 }
 
