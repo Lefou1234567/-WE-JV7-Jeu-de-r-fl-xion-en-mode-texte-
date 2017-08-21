@@ -29,5 +29,6 @@ void gGrid_destroy(gGrid grid);
 
 void gGrid_define_sizeCase(gGrid grid);
 int gGrid_skin_get_case_lineIndex(gGrid, int lineIndex);
+int gGrid_skin_get_case_columnIndex(gGrid grid, int columnIndex);
 
 #endif

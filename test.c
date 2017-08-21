@@ -7,9 +7,10 @@
 
 
 int main(int argc, char** argv) { 
+
 	tools_alloc_init();
 
-	gGrid grid = gGrid_create(3, '~', '#');
+	gGrid grid = gGrid_create(5, '~', '#');
 
 	charray_display(grid->skin);
 	fprintf(stderr, "\n\n");

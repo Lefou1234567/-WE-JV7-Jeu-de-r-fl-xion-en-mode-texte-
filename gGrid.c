@@ -2,7 +2,7 @@
 #include <stdlib.h> 
 #include "tools.h"
 #include "charray2D.h"
-#include "gGrid.h"
+#include "gGrid.h" 
 
 /*
 	charray data;
@@ -24,7 +24,7 @@ gGrid gGrid_create(int size, char colorState1, char colorState2) {
 	gGrid grid = tools_malloc(sizeof(struct _gGrid));
 	grid->data = charray_create(size, size, colorState1);
 	grid->size = size;
-	grid->sizeCase = 15 / size;
+	grid->sizeCase = 90 / size;
 	grid->numberOfSeparators = size - 1;	
 	grid->colorState1 = colorState1;
 	grid->colorState2 = colorState2; 
@@ -50,6 +50,16 @@ void gGrid_skin_update_aux(gGrid grid) {
 	grid->skin = charray_create(grid->size * grid->sizeCase + grid->numberOfSeparators, grid->size * grid->sizeCase + grid->numberOfSeparators, grid->colorState1);
 	
 	int curseur = 0;
+	char* pointer = grid->skin->data;
+	
+	for(int lineIndex = 0; lineIndex < grid->skin->height; lineIndex++) {
+
+		for(int columnIndex = 0; columnIndex < grid->skin->width; columnIndex++) {
+			
+			*pointer = grid->data->data2D[gGrid_skin_get_case_lineIndex(grid, lineIndex)][gGrid_skin_get_case_columnIndex(grid, columnIndex)];
+			pointer++;
+		}
+	}
 
 	for(int i = 1; i <= grid->numberOfSeparators; i++) {
 	
@@ -81,13 +91,25 @@ int gGrid_skin_get_case_lineIndex(gGrid grid, int lineIndex) {
 	
 	for(int lineIndexData = 0; lineIndexData < grid->data->width; lineIndexData++) {
 
-		if(lineIndexData * grid->sizeCase + lineIndexData <= lineIndex && lineIndex >= (lineIndexData + 1) * grid->sizeCase + lineIndexData + 1)
-			return lineIndexData;
-
+		if(lineIndexData * (grid->sizeCase + 1) <= lineIndex && lineIndex <= lineIndexData * (grid->sizeCase + 1) + grid->sizeCase  - 1)
+			return lineIndexData;	
 	}	
-
-	fprintf(stderr, "gGrid_skin_get_case_lineIndex : Index non trouve !\n");
 
 	return 0;
 }
+
+int gGrid_skin_get_case_columnIndex(gGrid grid, int columnIndex) {
+
+	int_normalize(&columnIndex, 0, grid->skin->width);
+
+	for(int columnIndexData = 0; columnIndexData < grid->data->width; columnIndexData++) {
+
+		if(columnIndexData * (grid->sizeCase + 1) <= columnIndex && columnIndex <= columnIndexData * (grid->sizeCase + 1) + grid->sizeCase - 1)
+			return columnIndexData;
+	}
+
+	return 0;
+}
+
+
 
