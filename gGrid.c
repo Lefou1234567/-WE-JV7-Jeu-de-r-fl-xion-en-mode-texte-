@@ -24,7 +24,7 @@ gGrid gGrid_create(int size, char colorState1, char colorState2) {
 	gGrid grid = tools_malloc(sizeof(struct _gGrid));
 	grid->data = charray_create(size, size, colorState1);
 	grid->size = size;
-	grid->sizeCase = 90 / size;
+	grid->sizeCase = 15 / size;
 	grid->numberOfSeparators = size - 1;	
 	grid->colorState1 = colorState1;
 	grid->colorState2 = colorState2; 

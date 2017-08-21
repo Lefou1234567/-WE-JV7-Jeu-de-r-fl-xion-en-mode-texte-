@@ -1,8 +1,0 @@
-index(0) = i * (sizeCase + 1)
-
-index(last) = index(0) + sizeCase - 1
-	
-	= i * (sizeCase + 1) + sizeCase - 1
-
-
-

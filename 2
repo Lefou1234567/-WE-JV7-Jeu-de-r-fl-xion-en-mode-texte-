@@ -19,7 +19,7 @@
   *  -4 : 4 X 4, 3 coups
   */
 
-typedef struct _lgame* lgame;
+typedef struct _lgame* lgame
 
 struct _lgame {
 
@@ -29,14 +29,11 @@ struct _lgame {
 	int gridSize;
 	int numberOfTry;
 	int numberOfSwitch;
-	int remainingSwitch;
 	int numberOfLifes;
 };
 
-lgame standard_lgame_create(int difficulty);
 lgame lgame_create(char colorState1, char colorState2, int difficulty);
-lgame lgame_create_aux(int difficulty);
-void lgame_destroy(lgame game);
-void lgame_inform_player(lgame game);
+lgame standard_lgame_create(int difficulty);
+
 
 #endif
