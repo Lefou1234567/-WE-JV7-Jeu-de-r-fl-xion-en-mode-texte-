@@ -13,6 +13,7 @@ int main(int argc, char** argv) {
 
 	lgame game = standard_lgame_create(0);
 	
+	gGrid_switch(game->gridGame, 1, 0);
 	fprintf(stderr, "\n");
 	lgame_inform_player(game);
 	fprintf(stderr, "\n\n");

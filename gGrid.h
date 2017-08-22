@@ -30,5 +30,9 @@ void gGrid_destroy(gGrid grid);
 void gGrid_define_sizeCase(gGrid grid);
 int gGrid_skin_get_case_lineIndex(gGrid, int lineIndex);
 int gGrid_skin_get_case_columnIndex(gGrid grid, int columnIndex);
+void gGrid_switch(gGrid grid, int lineIndex, int columnIndex);
+void gGrid_inverse_and_warn(gGrid, int lineIndex, int columnIndex);
+void gGrid_inverse(gGrid grid, int lineIndex, int columnIndex);
+void gGrid_inverse_aux(gGrid grid, int lineIndex, int columnIndex);
 
 #endif

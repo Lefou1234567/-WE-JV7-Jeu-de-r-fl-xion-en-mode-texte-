@@ -34,27 +34,27 @@ lgame lgame_create_aux(int difficulty) {
 	switch (game->difficulty) {
 
 	case 0 :
-		game->gridSize = 2;
+		game->gridSize = 3;
 		game->numberOfSwitch = 1;
 		break;
 
 	case 1 : 
-		game->gridSize = 2;
+		game->gridSize = 3;
 		game->numberOfSwitch = 2;
 		break;
 	
 	case 2 : 
-		game->gridSize = 3;
+		game->gridSize = 4;
 		game->numberOfSwitch = 2;
 		break;
 
 	case 3 :
-		game->gridSize = 4;
+		game->gridSize = 5;
 		game->numberOfSwitch = 2;
 		break;
 
 	case 4 : 
-		game->gridSize = 4;
+		game->gridSize = 5;
 		game->numberOfSwitch = 3;
 		break;
 	

@@ -111,5 +111,67 @@ int gGrid_skin_get_case_columnIndex(gGrid grid, int columnIndex) {
 	return 0;
 }
 
+void gGrid_inverse_and_warn(gGrid grid, int lineIndex, int columnIndex) {
 
+	if(lineIndex < 0 || lineIndex >= grid->size) {
+
+		fprintf(stderr, "Les coordonees saisis sont invalides !\n");
+		return;
+	}
+	
+	else if(columnIndex < 0 || columnIndex >= grid->size) {
+		
+		fprintf(stderr, "Les coordonnees saisis sont invalides !\n");
+		return;
+	}
+
+	gGrid_inverse_aux(grid, lineIndex, columnIndex);
+}
+
+void gGrid_inverse(gGrid grid, int lineIndex, int columnIndex) {
+
+	if(lineIndex < 0 || lineIndex >= grid->size)
+		return;
+
+	else if(columnIndex < 0 || columnIndex >= grid->size)
+		return;
+
+	gGrid_inverse_aux(grid, lineIndex, columnIndex);
+}
+
+void gGrid_inverse_aux(gGrid grid, int lineIndex, int columnIndex) {
+
+	if(grid->data->data2D[lineIndex][columnIndex] == grid->colorState1)
+		grid->data->data2D[lineIndex][columnIndex] = grid->colorState2;
+	
+	else
+		grid->data->data2D[lineIndex][columnIndex] = grid->colorState1;
+
+	gGrid_skin_update(grid);
+}
+
+void gGrid_switch(gGrid grid, int lineIndex, int columnIndex) {
+
+	if(lineIndex < 0 || lineIndex >= grid->size) {
+
+		fprintf(stderr, "Les coordonees saisies sont invalides !\n");
+		return;
+	}
+
+	if(columnIndex < 0 || columnIndex >= grid->size) {
+
+		fprintf(stderr, "Les coordonees saisies sont invaldies !\n");
+		return;
+	}
+
+	for(int lineIndex2 = lineIndex - 1; lineIndex2 < lineIndex + 2; lineIndex2++) {
+
+		for(int columnIndex2 = columnIndex - 1; columnIndex2 < columnIndex + 2; columnIndex2++) {
+			
+			fprintf(stderr, "lineIndex : %d, columnIndex : %d\n", lineIndex2, columnIndex2);
+			gGrid_inverse(grid, lineIndex2, columnIndex2);
+
+		}
+	}
+}
 
