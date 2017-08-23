@@ -85,6 +85,17 @@ void gGrid_destroy(gGrid grid) {
 	tools_free(grid, sizeof(struct _gGrid));
 }
 
+int gGrid_are_equal(gGrid grid1, gGrid grid2) {
+
+	if(grid1 == grid2)
+		return 1;
+
+	else if(charray_are_equal(grid1->data, grid2->data))
+		return 1;
+
+	return 0;
+}
+
 int gGrid_skin_get_case_lineIndex(gGrid grid, int lineIndex) {
 	
 	int_normalize(&lineIndex, 0, grid->skin->height);
@@ -166,12 +177,8 @@ void gGrid_switch(gGrid grid, int lineIndex, int columnIndex) {
 
 	for(int lineIndex2 = lineIndex - 1; lineIndex2 < lineIndex + 2; lineIndex2++) {
 
-		for(int columnIndex2 = columnIndex - 1; columnIndex2 < columnIndex + 2; columnIndex2++) {
-			
-			fprintf(stderr, "lineIndex : %d, columnIndex : %d\n", lineIndex2, columnIndex2);
+		for(int columnIndex2 = columnIndex - 1; columnIndex2 < columnIndex + 2; columnIndex2++)
 			gGrid_inverse(grid, lineIndex2, columnIndex2);
-
-		}
 	}
 }
 

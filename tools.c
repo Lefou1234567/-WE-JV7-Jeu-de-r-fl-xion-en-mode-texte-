@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #include "tools.h"
 
@@ -61,4 +62,22 @@ void int_normalize(int* pointerOfValue, int valueMin, int valueMax) {
 
 	else if(*pointerOfValue > valueMax)
 		*pointerOfValue = valueMax;
+}
+
+int tools_random_int(int minValue, int maxValue) {
+	
+	if(minValue > maxValue)
+		int_swap(&minValue, &maxValue);
+
+	int amplitude = maxValue - minValue + 1;
+	float temporaryValue = (1.0 * rand() / INT_MAX) * amplitude;
+	int alea = (int) (minValue + temporaryValue);
+
+	if(alea < minValue)
+		alea = minValue;
+
+	else if(alea > maxValue)
+		alea = maxValue;
+
+	return alea;
 }

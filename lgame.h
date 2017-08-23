@@ -12,11 +12,11 @@
 
  /* Difficulty rules : 
   *
-  *  -0 : 2 X 2, 1 coup 
-  *  -1 : 2 X 2, 2 coups
-  *  -2 : 3 X 3, 2 coups
-  *  -3 : 4 X 4, 2 coups
-  *  -4 : 4 X 4, 3 coups
+  *  - 0 : 3 X 2, 1 coup 
+  *  - 1 : 3 X 2, 2 coups
+  *  - 2 : 4 X 3, 2 coups
+  *  - 3 : 5 X 4, 2 coups
+  *  - 4 : 5 X 4, 3 coups
   */
 
 typedef struct _lgame* lgame;
@@ -38,5 +38,12 @@ lgame lgame_create(char colorState1, char colorState2, int difficulty);
 lgame lgame_create_aux(int difficulty);
 void lgame_destroy(lgame game);
 void lgame_inform_player(lgame game);
+void lgame_play(lgame game);
+void lgame_update_variables(lgame game, int areGridsEqual, int* isGameWon, int* isPlaying);
+void lgame_print_result(lgame game, int isGameWon);
+void lgame_ask_index_loop(lgame game, int* lineIndex, int* columnIndex);
+void lgame_ask_index(lgame game, int* lineIndex, int* columnIndex);
+void lgame_set_random_shape(lgame game);
+void lgame_shuffle_gridGame(lgame game);
 
 #endif

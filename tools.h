@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int TOOLS_ALLOC;
 
@@ -16,5 +17,6 @@ void int_swap(int* value1, int* value2);
 
 void int_normalize_and_warn(int* pointerOfValue, int valueMin, int valueMax);
 void int_normalize(int* pointerOfValue, int valueMin, int valueMax);
+int tools_random_int(int minValue, int maxValue);
 
 #endif

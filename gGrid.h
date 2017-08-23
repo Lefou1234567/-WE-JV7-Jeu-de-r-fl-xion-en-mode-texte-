@@ -27,6 +27,7 @@ void gGrid_skin_update(gGrid grid);
 void gGrid_skin_update_aux(gGrid grid);
 void gGrid_destroy(gGrid grid);
 
+int gGrid_are_equal(gGrid grid1, gGrid grid2);
 void gGrid_define_sizeCase(gGrid grid);
 int gGrid_skin_get_case_lineIndex(gGrid, int lineIndex);
 int gGrid_skin_get_case_columnIndex(gGrid grid, int columnIndex);
